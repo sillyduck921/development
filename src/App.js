@@ -12,13 +12,13 @@ function App() {
     {name: "Vermont Cheddar Cheese Bread", description: "a savory mild sourdough studded with chunks of cheddar cheese", price: 7.75, glutenFree: false, dairyFree: false, nutFree: true},
     {name: "Walnut Raisin Batard", description: "a dense, crusty sourdough made with our house-milled whole wheat and rye flour, packed with toasted walnuts and raisins", price: 8.35,  glutenFree: false, dairyFree: true, nutFree: false},
     {name: "Multigrain Round", description: "a dense, hearty sourdough made with our house-milled whole wheat and rye flours, packed with flavor and fiber", price: 4.25, glutenFree: false, dairyFree: true, nutFree: true},
-    {name: "Salted Butter", price: 1.25, glutenFree: true, dairyFree: false, nutFree: true},
-    {name: "Whipped Butter", price: 2.00, glutenFree: true, dairyFree: false, nutFree: true},
-    {name: "Honey Margarine", price: 2.25, glutenFree: true, dairyFree: true, nutFree: true},
-    {name: "Maple Butter", price: 2.35, glutenFree: true, dairyFree: false, nutFree: true},
-    {name: "Apple Margarine", price: 4.85, glutenFree: true, dairyFree: true, nutFree: true},
-    {name: "Pesto Parmesan Butter", price: 4.25, glutenFree: true, dairyFree: false, nutFree: true},
-    {name: "Garlic Herb Margarine", price: 3.35, glutenFree: true, dairyFree: true, nutFree: true},
+    {name: "Salted Butter", description: "a classic salted spread", price: 1.25, glutenFree: true, dairyFree: false, nutFree: true},
+    {name: "Whipped Butter", description: "a light spread with our salted butter whipped to perfection", price: 2.00, glutenFree: true, dairyFree: false, nutFree: true},
+    {name: "Honey Margarine", description: "a mild margarine incorporated with local wildflower honey", price: 2.25, glutenFree: true, dairyFree: true, nutFree: true},
+    {name: "Maple Butter", description: "a sweet spread made with with traditional Vermont maple syrup", price: 2.35, glutenFree: true, dairyFree: false, nutFree: true},
+    {name: "Apple Margarine", description: "a fruity twist on our mild margarine, made with Granny Smith and Honeycrisp puree", price: 4.85, glutenFree: true, dairyFree: true, nutFree: true},
+    {name: "Pesto Parmesan Butter", description: "a savory spread made with house carrot-top pesto and parmesan",price: 4.25, glutenFree: true, dairyFree: false, nutFree: true},
+    {name: "Garlic Herb Margarine", description: "a rich spread made with an assortment of herbs and roasted garlic", price: 3.35, glutenFree: true, dairyFree: true, nutFree: true},
   ]
 
   return (
