@@ -1,29 +1,57 @@
 import './App.css';
+import DisplayList from './DisplayList';
+import { Component } from 'react';
+import Form from 'react-bootstrap/Form';
 
 class FilteredList extends Component {
     constructor(props) {
         super(props);
         this.state = {
             type: "All",
-            dietary: "All",
+            location: "All",
+            popularity: true,
+            price: false,
         };
     
     }
 
     onSelectFilterType = event => {
         this.setState({
-            price: event
+            type: event,
+            location: this.state.location,
+            popularity: this.state.popularity,
+            price: this.state.price,
+        });
+    }
+
+    onSelectFilterLocation = event => {
+        this.setState({
+            type: this.state.type,
+            location: event,
+            popularity: this.state.popularity,
+            price: this.state.price,
         })
     }
 
-    onSelectFilterDietary = event => {
+    onSelectSortPrice = event => {
         this.setState({
-            dietary: event
+            type: this.state.type,
+            location: this.state.location,
+            popularity: !event,
+            price: event,
+        })
+    }
+
+    onSelectSortPopularity = event => {
+        this.setState({
+            type: this.state.type,
+            location: this.state.location,
+            popularity: event,
+            price: !event,
         })
     }
 
     matchesFilterType = item => {
-        // all items should be shown when no filter is selected
         if (this.state.type === "All") { 
             return true
         } else if (this.state.type === item.type) {
@@ -33,15 +61,113 @@ class FilteredList extends Component {
         }
     }
 
-    matchesFilterDietary = item => {
-        // all items should be shown when no filter is selected
-        if (this.state.dietary === "All") { 
+    matchesFilterLocation = item => {
+        if (this.state.location === "All") { 
             return true
-        } else if (this.state.dietary === item.dietary) {
+        } else if (this.state.location === item.location) {
             return true
         } else {
             return false
         }
+    }
+
+    render() {
+        return (
+            <div>
+                <div className="filter">
+                <Form className="form">
+                    <div>
+                        Filter by Type
+                    </div>
+                    <div className="options">
+                    <Form.Check 
+                        type="radio"
+                        id="radio-button-all"
+                        label="All"
+                        onChange={() => this.onSelectFilterType("All")}
+                        checked={this.state.type === "All"}
+                    />
+                    <Form.Check 
+                        type="radio"
+                        id="radio-button-bread"
+                        label="Bread"
+                        onChange={() => this.onSelectFilterType("Bread")}
+                        checked={this.state.type === "Bread"}
+                    />
+                    <Form.Check 
+                        type="radio"
+                        id="radio-button-butter"
+                        label="Butter"
+                        onChange={() => this.onSelectFilterType("Butter")}
+                        checked={this.state.type === "Butter"}
+                    />
+                    </div>
+                </Form>
+                <Form className="form">
+                    <div>
+                        Filter by Source
+                    </div>
+                    <div className="options">
+                    <Form.Check 
+                        type="radio"
+                        id="radio-button-all-location"
+                        label="All"
+                        onChange={() => this.onSelectFilterLocation("All")}
+                        checked={this.state.location === "All"}
+                    />
+                    <Form.Check 
+                        type="radio"
+                        id="radio-button-house"
+                        label="Made In-House"
+                        onChange={() => this.onSelectFilterLocation("Made In-House")}
+                        checked={this.state.location === "Made In-House"}
+                    />
+                    <Form.Check 
+                        type="radio"
+                        id="radio-button-local"
+                        label="Sourced Locally"
+                        onChange={() => this.onSelectFilterLocation("Sourced Locally")}
+                        checked={this.state.location === "Sourced Locally"}
+                    />
+                    <Form.Check 
+                        type="radio"
+                        id="radio-button-import"
+                        label="Imported"
+                        onChange={() => this.onSelectFilterLocation("Imported")}
+                        checked={this.state.location === "Imported"}
+                    />
+                    </div>
+                </Form>
+                <Form className="form">
+                    <div>
+                        Sort by:
+                    </div>
+                    <div className="options">
+                <Form.Check 
+                        type="radio"
+                        id="radio-button-popularity"
+                        label="Popularity"
+                        onChange={() => this.onSelectSortPopularity(true)}
+                        checked={this.state.popularity === true}
+                    />
+                <Form.Check 
+                        type="radio"
+                        id="radio-button-price"
+                        label="Price"
+                        onChange={() => this.onSelectSortPrice(true)}
+                        checked={this.state.price === true}
+                    />
+                    </div>
+                </Form>
+                
+                </div>
+                <div>
+                {this.state.price ? 
+                    <DisplayList list={this.props.list.filter(this.matchesFilterType && this.matchesFilterLocation).sort((a, b) => a.price - b.price)}/> : 
+                    <DisplayList list={this.props.list.filter(this.matchesFilterType && this.matchesFilterLocation).sort((a, b) => a.popularity - b.popularity)}/> }
+                </div>
+            </div>
+        );
     }
     
     
