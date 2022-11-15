@@ -1,8 +1,13 @@
 import './App.css';
 import { Component } from 'react';
-import { Heart } from 'react-bootstrap-icons';
+import { Heart, HeartFill } from 'react-bootstrap-icons';
 
 class ItemCard extends Component {
+
+    setFavorite = event => {
+        this.props.item.favorite = event;
+    }
+
     render() {
         return (
             <div className="card">
@@ -23,10 +28,15 @@ class ItemCard extends Component {
                         </div>
                     </div>
                     <div className="button">
-                        <button className="favorite-button" onClick={() => this.props.setFavorites(this.props.item)}>
+                        {this.props.item.favorite ? 
+                        <button className="favorite-button-remove" onClick={() => this.setFavorite(false)}>
+                        <HeartFill color="white" size="20px" />
+                        Remove from Favorites
+                    </button> : 
+                    <button className="favorite-button" onClick={() => this.setFavorite(true)}>
                             <Heart color="white" size="20px" />
                             Add to Favorites
-                        </button>
+                        </button>}
                     </div>
                 </div>
             </div>
