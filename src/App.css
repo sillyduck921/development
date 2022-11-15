@@ -7,26 +7,30 @@
 
 .header {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   color: #244c66;
   font-weight: 900;
-  font-size: 60px;
-  padding: 80px;
+  font-size: 70px;
+  padding: 60px 80px 40px 60px;
 }
 
 .title {
-  display: flex;
-  align-self: flex-start;
   margin: 0px;
+}
+
+.subtitle {
+  margin: 0px;
+  font-weight: 600;
+  font-size: 40px;
 }
 
 .body {
   padding: 80px;
   padding-top: 0px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .filter {
@@ -35,24 +39,6 @@
   justify-content: left;
   align-items: center;
   gap: 30px;
-}
-
-#dropdown-button {
-  background: white;
-  font-size: 20px;
-  border: 0px;
-  color: #8aa0ae;
-}
-
-.dropdown-menu {
-  display: flex;
-  flex-direction: column;
-}
-
-.dropdown-item {
-  font-size: 16px;
-  color: #244c66;
-  font-style: normal;
 }
 
 .form {
@@ -80,3 +66,101 @@
   gap: 10px;
 }
 
+.image {
+  width: 100%;
+  height: 250px;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  margin-bottom: 30px;
+  box-shadow: 0.5px 0.5px 5px #8aa0ae;
+  border-radius: 24px;
+}
+
+.card-bottom {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+}
+
+.item-name {
+  color: #244c66;
+  font-weight: 800;
+  font-size: 24px;
+}
+
+.item-description {
+  color: #8aa0ae;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.item-price {
+  color: #3f2e27;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.categories {
+  color: #846a5b;
+  font-weight: 700;
+}
+
+.favorite-button {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  background-color: #244c66;
+  height: 45px;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border: none;
+  border-radius: 24px;
+  font-weight: 700;
+  font-size: 18px;
+  font-family: 'Raleway', sans-serif;
+  width: 100%;
+}
+
+.card-list {
+  display: grid;
+  grid-gap: 55px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+.favorites {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  border: 1px solid #846a5b;
+  border-radius: 16px;
+  color: #8aa0ae;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.card-text {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.button {
+  display: flex;
+  justify-content: end;
+}

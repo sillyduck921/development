@@ -5,11 +5,10 @@ import ItemCard from './ItemCard'
 class DisplayList extends Component {
     render() {
         return (
-            <div>
+            <div className="card-list">
                 {this.props.list.map(item => 
-                    <li>
-                        <ItemCard item={item} />
-                    </li>)}
+                        <ItemCard item={item} setFavorites={this.props.setFavorites} />
+                    )}
             </div>
 
         );

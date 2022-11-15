@@ -146,7 +146,7 @@ class FilteredList extends Component {
                 <Form.Check 
                         type="radio"
                         id="radio-button-popularity"
-                        label="Popularity"
+                        label="Popular"
                         onChange={() => this.onSelectSortPopularity(true)}
                         checked={this.state.popularity === true}
                     />
@@ -163,8 +163,8 @@ class FilteredList extends Component {
                 </div>
                 <div>
                 {this.state.price ? 
-                    <DisplayList list={this.props.list.filter(this.matchesFilterType && this.matchesFilterLocation).sort((a, b) => a.price - b.price)}/> : 
-                    <DisplayList list={this.props.list.filter(this.matchesFilterType && this.matchesFilterLocation).sort((a, b) => a.popularity - b.popularity)}/> }
+                    <DisplayList list={this.props.list.filter(this.matchesFilterType && this.matchesFilterLocation).sort((a, b) => a.price - b.price)} /> : 
+                    <DisplayList list={this.props.list.filter(this.matchesFilterType && this.matchesFilterLocation).sort((a, b) => a.popularity - b.popularity)} /> }
                 </div>
             </div>
         );
