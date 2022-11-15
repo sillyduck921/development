@@ -29,11 +29,11 @@ class ItemCard extends Component {
                     </div>
                     <div className="button">
                         {this.props.item.favorite ? 
-                        <button className="favorite-button-remove" onClick={() => this.setFavorite(false)}>
+                        <button className="favorite-button-remove" onClick={this.props.add}>
                         <HeartFill color="white" size="20px" />
                         Remove from Favorites
                     </button> : 
-                    <button className="favorite-button" onClick={() => this.setFavorite(true)}>
+                    <button className="favorite-button" onClick={this.props.subtract}>
                             <Heart color="white" size="20px" />
                             Add to Favorites
                         </button>}

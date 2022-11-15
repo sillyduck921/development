@@ -12,7 +12,8 @@ class FilteredList extends Component {
             location: "All",
             popularity: true,
             price: false,
-            favorite: "All",
+            favorite: false,
+            total: 0,
         };
     }
 
@@ -23,6 +24,7 @@ class FilteredList extends Component {
             popularity: this.state.popularity,
             price: this.state.price,
             favorite: this.state.favorite,
+            total: this.state.total,
         });
     }
 
@@ -33,6 +35,7 @@ class FilteredList extends Component {
             popularity: this.state.popularity,
             price: this.state.price,
             favorite: this.state.favorite,
+            total: this.state.total,
         })
     }
 
@@ -43,6 +46,7 @@ class FilteredList extends Component {
             popularity: this.state.popularity,
             price: this.state.price,
             favorite: event,
+            total: this.state.total,
         })
     }
 
@@ -53,6 +57,7 @@ class FilteredList extends Component {
             popularity: !event,
             price: event,
             favorite: this.state.favorite,
+            total: this.state.total,
         })
     }
 
@@ -87,17 +92,33 @@ class FilteredList extends Component {
     }
 
     matchesFilterFavorite = item => {
-        if (this.state.favorite === "All") {
-            return true
-        } else if (this.state.favorite === item.favorite) {
+        if (item.favorite === true) {
             return true
         } else {
             return false
         }
     }
 
-    calculateFavoriteTotal = item => {
-        
+    calculateAddFavoriteTotal = item => {
+        this.setState({
+            type: this.state.type,
+            location: this.state.location,
+            popularity: this.state.popularity,
+            price: this.state.price,
+            favorite: this.state.favorite,
+            total: this.state.total + item.price,
+        })
+    }
+
+    calculateSubtractFavoriteTotal = item => {
+        this.setState({
+            type: this.state.type,
+            location: this.state.location,
+            popularity: this.state.popularity,
+            price: this.state.price,
+            favorite: this.state.favorite,
+            total: this.state.total - item.price,
+        })
     }
 
     render() {
@@ -188,13 +209,17 @@ class FilteredList extends Component {
                             />
                         </div>
                     </Form>
-                    <FavoritesList onClick={() => this.state.favorite === true ? this.onSelectFilterFavorite(false) : this.onSelectFilterFavorite(true)} />
+                    <FavoritesList onClick={() => this.state.favorite === true ? this.onSelectFilterFavorite(false) : this.onSelectFilterFavorite(true)} total={this.state.total} />
                 </div>
                 <div>
-                    {this.state.price ?
-                        <DisplayList list={this.props.list.filter(this.matchesFilterType).filter(this.matchesFilterLocation).filter(this.matchesFilterFavorite).sort((a, b) => a.price - b.price)} /> :
-                        <DisplayList list={this.props.list.filter(this.matchesFilterType).filter(this.matchesFilterLocation).filter(this.matchesFilterFavorite).sort((a, b) => a.popularity - b.popularity)} />}
-
+                    {this.state.favorite ?
+                        (this.state.price ?
+                            <DisplayList list={this.props.list.filter(this.matchesFilterType).filter(this.matchesFilterLocation).filter(this.matchesFilterFavorite).sort((a, b) => a.price - b.price)} add={this.calculateAddFavoriteTotal} subtract={this.calculateSubtractFavoriteTotal} /> :
+                            <DisplayList list={this.props.list.filter(this.matchesFilterType).filter(this.matchesFilterLocation).filter(this.matchesFilterFavorite).sort((a, b) => a.popularity - b.popularity)} add={this.calculateAddFavoriteTotal} subtract={this.calculateSubtractFavoriteTotal} />) :
+                        (this.state.price ?
+                            <DisplayList list={this.props.list.filter(this.matchesFilterType).filter(this.matchesFilterLocation).sort((a, b) => a.price - b.price)} add={this.calculateAddFavoriteTotal} subtract={this.calculateSubtractFavoriteTotal} /> :
+                            <DisplayList list={this.props.list.filter(this.matchesFilterType).filter(this.matchesFilterLocation).sort((a, b) => a.popularity - b.popularity)} add={this.calculateAddFavoriteTotal} subtract={this.calculateSubtractFavoriteTotal} /> )
+                    }
                 </div>
             </div>
         );

@@ -7,7 +7,7 @@ class DisplayList extends Component {
         return (
             <div className="card-list">
                 {this.props.list.map(item => 
-                        <ItemCard item={item} />
+                        <ItemCard item={item} add={() => this.props.calculateAddFavoriteTotal(item)} subtract={() => this.props.calculateSubtractFavoriteTotal(item)} />
                     )}
             </div>
 
