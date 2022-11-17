@@ -2,7 +2,7 @@ import './App.css';
 import { Component } from 'react';
 import { HeartFill } from 'react-bootstrap-icons';
 
-class FavoritesList extends Component {
+class FavoritesButton extends Component {
     render() {
         return (
             <button className="favorite-filter" onClick={this.props.onClick}>
@@ -20,4 +20,4 @@ class FavoritesList extends Component {
     }
 }
 
-export default FavoritesList;
+export default FavoritesButton;
