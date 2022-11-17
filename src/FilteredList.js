@@ -234,7 +234,7 @@ class FilteredList extends Component {
                             />
                         </div>
                     </Form>
-                    <FavoritesButton onClick={() => this.state.favorite === true ? this.onSelectFilterFavorite(false) : this.onSelectFilterFavorite(true)} total={this.state.total.toFixed(2).replace(/\.00$/, '')} />
+                    <FavoritesButton onClick={() => this.state.favorite === true ? this.onSelectFilterFavorite(false) : this.onSelectFilterFavorite(true)} total={this.state.total.toFixed(2).replace(/\.00$/, '')} favorite={this.state.favorite} />
                 </div>
                 <div>
                     {this.state.favorite ?
